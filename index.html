@@ -58,6 +58,63 @@ html,body{max-width:100%;overflow-x:hidden}
   .closing{margin-top:12px}
 }
 
+
+/* V8: final page fits inside one 9:16 portrait phone screen */
+.result-screen{
+  height:100svh !important;
+  min-height:0 !important;
+  padding:7svh 0 3svh !important;
+  overflow:hidden !important;
+  justify-content:flex-start !important;
+}
+.result-screen .unlock{
+  margin:0 0 1.8svh !important;
+  padding:1.6svh 14px !important;
+}
+.result-screen .unlock b{font-size:20px !important;margin-bottom:3px !important}
+.result-screen .pass{
+  padding:14px 16px !important;
+  border-width:3px !important;
+}
+.result-screen .pass-title{
+  margin-bottom:10px !important;
+  font-size:18px !important;
+}
+.result-screen .row{
+  margin:7px 0 !important;
+  font-size:15px !important;
+}
+.result-screen .location{
+  font-size:13px !important;
+  white-space:nowrap !important;
+  letter-spacing:-.75px !important;
+}
+.result-screen .sleep-wrap{
+  margin:1.5svh auto 0 !important;
+  height:22svh !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+}
+.result-screen .sleeping-snorlax{
+  width:auto !important;
+  height:20svh !important;
+  max-width:72vw !important;
+  object-fit:contain !important;
+  margin:0 auto !important;
+}
+.result-screen .closing{
+  margin:1svh 0 0 !important;
+  padding:0 !important;
+  font-size:17px !important;
+}
+@media (max-aspect-ratio: 9/17){
+  .result-screen{padding-top:5svh !important}
+  .result-screen .sleep-wrap{height:19svh !important}
+  .result-screen .sleeping-snorlax{height:17svh !important}
+}
+
 </style>
 </head>
 <body>
