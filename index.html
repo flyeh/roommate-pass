@@ -32,45 +32,41 @@ button{width:82%;display:block;margin:18px auto 8px;padding:14px;border:0;border
 .msg{text-align:center;color:#916c5d;font-size:14px;min-height:22px}
 .hidden{display:none!important}
 
-/* final 9:16 composition */
+/* final */
 .result-screen{
-  height:100svh;
   width:100%;
-  padding:6.5svh 0 2svh;
+  min-height:100svh;
+  padding:6.2svh 0 4svh;
   display:flex;
   flex-direction:column;
   align-items:center;
-  overflow:hidden;
+  text-align:center;
 }
 .unlock{
   width:100%;
-  flex:0 0 auto;
   text-align:center;
   background:rgba(239,249,231,.96);
   border:1px solid #d4e8c6;
   border-radius:25px;
   padding:1.55svh 12px;
-  margin:0 0 2.1svh;
+  margin:0 0 2svh;
 }
 .unlock b{display:block;font-size:21px;color:#2d6c5c;margin-bottom:3px}
 .pass{
   position:relative;
   width:100%;
-  flex:0 0 auto;
   background:#fffdf8;
   border:3px solid var(--teal);
   border-radius:23px;
   padding:0 15px 13px;
   text-align:left;
   box-shadow:0 10px 24px rgba(36,73,90,.10);
-  overflow:visible;
 }
 .pass:before,.pass:after{
   content:"";position:absolute;top:29%;width:27px;height:44px;
   background:#edf4f1;border:3px solid var(--teal);border-radius:50%;
 }
-.pass:before{left:-17px}
-.pass:after{right:-17px}
+.pass:before{left:-17px}.pass:after{right:-17px}
 .pass-title{
   margin:0 -15px 11px;
   padding:12px 15px 11px;
@@ -80,46 +76,35 @@ button{width:82%;display:block;margin:18px auto 8px;padding:14px;border:0;border
   font-weight:900;
   white-space:nowrap;
 }
-.row{
-  display:grid;
-  grid-template-columns:68px minmax(0,1fr);
-  align-items:center;
-  gap:7px;
-  margin:7px 0;
-  font-size:16px;
-}
+.row{display:grid;grid-template-columns:68px minmax(0,1fr);align-items:center;gap:7px;margin:7px 0;font-size:16px}
 .key{font-weight:900}
 .roommate{display:flex;align-items:center;gap:8px}
 .mini{width:31px;height:31px;object-fit:cover;border-radius:50%}
 .location{font-size:13.5px;white-space:nowrap;letter-spacing:-.8px}
 
-/* Sleeping Snorlax: complete, centered, reference-like */
+/* Large sleeping Snorlax area, like the reference screenshot */
 .sleep-wrap{
   width:100%;
-  flex:1 1 auto;
-  min-height:0;
+  margin:2.2svh 0 0;
   display:flex;
   align-items:center;
   justify-content:center;
-  margin:.7svh 0 0;
-  overflow:hidden;
 }
 .sleeping-snorlax{
   display:block;
-  width:96%;
-  max-width:410px;
+  width:88%;
+  max-width:380px;
   height:auto;
-  max-height:31svh;
   object-fit:contain;
   margin:0 auto;
 }
 .closing{
-  flex:0 0 auto;
   width:100%;
   text-align:center;
   font-size:18px;
   font-weight:800;
-  margin:.6svh 0 1svh;
+  margin:1.4svh 0 0;
+  padding-bottom:2svh;
 }
 
 @media(max-width:390px){
@@ -129,16 +114,8 @@ button{width:82%;display:block;margin:18px auto 8px;padding:14px;border:0;border
   .pass-title{font-size:17px}
   .row{grid-template-columns:62px minmax(0,1fr);font-size:15px}
   .location{font-size:12px;letter-spacing:-.8px}
-  .sleeping-snorlax{width:94%;max-height:29svh}
+  .sleeping-snorlax{width:86%;max-width:350px}
   .closing{font-size:17px}
-}
-@media(max-height:720px){
-  .result-screen{padding-top:3svh}
-  .unlock{padding:1svh 10px;margin-bottom:1.2svh}
-  .pass{padding-bottom:9px}
-  .pass-title{padding-top:9px;padding-bottom:8px;margin-bottom:7px}
-  .row{margin:5px 0}
-  .sleeping-snorlax{max-height:18svh}
 }
 
 </style>
