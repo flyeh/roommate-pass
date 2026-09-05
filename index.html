@@ -3,115 +3,138 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#eaf1eb">
 <title>卡比獸夥伴入住驗證</title>
 <style>
 :root{
-  --bg:#fff8dc; --card:#fffdf4; --ink:#4d4338; --soft:#8b7c6b;
-  --yellow:#ffd95a; --line:#eadfbd; --ok:#6f9c73;
+ --bg:#eaf1eb;--cream:#fffaf0;--ink:#24495a;--muted:#71858b;
+ --teal:#2f7287;--teal2:#73aeb7;--line:#c9d9d5;--green:#eaf5dc;
 }
 *{box-sizing:border-box}
 body{
-  margin:0; min-height:100vh; display:grid; place-items:center;
-  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
-  color:var(--ink);
-  background:
-    radial-gradient(circle at 15% 10%,#fff1a8 0 7%,transparent 8%),
-    radial-gradient(circle at 88% 88%,#ffe887 0 8%,transparent 9%),
-    var(--bg);
+ margin:0;min-height:100vh;color:var(--ink);
+ font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+ background:linear-gradient(180deg,#f5f3e8,#dfecea 58%,#c8dedd);
 }
-.wrap{width:min(92vw,430px);padding:24px 0}
-.card{
-  background:rgba(255,253,244,.96); border:1.5px solid var(--line);
-  border-radius:28px; padding:26px 22px; box-shadow:0 18px 50px rgba(96,75,25,.12);
+.page{width:min(94vw,440px);margin:auto;padding:22px 0 40px}
+.hero{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.hero-img{width:82px;height:82px;object-fit:cover;object-position:8% 7%;border-radius:24px}
+.title{
+ flex:1;background:rgba(255,250,240,.93);border:2px solid #9ca8a5;
+ border-radius:24px;padding:16px 12px;text-align:center;font-size:21px;font-weight:800;
+ box-shadow:0 8px 20px rgba(36,73,90,.09)
 }
-h1{font-size:24px;text-align:center;margin:0 0 22px}
-.q{margin:20px 0}
-.q h2{font-size:17px;margin:0 0 11px}
-label{
-  display:flex;align-items:center;gap:10px;padding:11px 12px;margin:8px 0;
-  border:1px solid var(--line);border-radius:14px;background:#fff;
-  cursor:pointer;transition:.18s;
+.panel{
+ background:rgba(255,250,240,.94);border:1px solid rgba(180,198,193,.7);
+ border-radius:25px;padding:18px;margin:13px 0;box-shadow:0 10px 28px rgba(36,73,90,.08)
 }
-label:has(input:checked){background:#fff5be;border-color:#e6c849;transform:translateY(-1px)}
-input{width:19px;height:19px;accent-color:#d5ad19}
+.qtitle{font-weight:800;font-size:18px;margin-bottom:12px}
+.choice{
+ display:flex;align-items:center;gap:11px;padding:10px 9px;border-radius:13px;
+ margin:4px 0;cursor:pointer;transition:.18s
+}
+.choice:has(input:checked){background:#e5f0eb}
+input{appearance:none;width:23px;height:23px;border:2px solid var(--teal);border-radius:6px;background:#fff;display:grid;place-content:center;margin:0}
+input:checked:after{content:"✓";font-size:18px;font-weight:900;color:var(--teal)}
 button{
-  width:100%;border:0;border-radius:16px;padding:14px;font-size:16px;font-weight:700;
-  background:var(--yellow);color:#554515;cursor:pointer;margin-top:8px;
-  box-shadow:0 5px 0 #d8b744;
+ width:82%;display:block;margin:18px auto 8px;border:0;border-radius:999px;
+ padding:14px;background:linear-gradient(180deg,#397f91,#2c6c80);color:white;
+ font-size:18px;font-weight:800;box-shadow:0 8px 18px rgba(36,73,90,.18)
 }
-button:active{transform:translateY(3px);box-shadow:0 2px 0 #d8b744}
-.msg{text-align:center;min-height:24px;margin-top:15px;font-size:14px;color:#a16d45}
-.hidden{display:none}
-.success{text-align:center;animation:pop .45s ease}
-.success .unlock{font-size:34px;margin-bottom:7px}
-.success h2{font-size:22px;margin:0 0 6px}
-.success p{margin:0;color:var(--soft)}
-.pass{margin-top:18px;padding:22px 18px;border:2px dashed #d6b94c;border-radius:22px;background:#fffaf0}
-.pass h3{text-align:center;font-size:21px;margin:0 0 20px}
-.row{display:grid;grid-template-columns:64px 1fr;gap:8px;margin:12px 0;line-height:1.55}
-.key{font-weight:700;color:#7d6c55}
-.closing{text-align:center;font-weight:700;font-size:18px;margin:22px 0 2px}
-.note{text-align:center;color:var(--soft);font-size:12px;margin-top:18px}
-@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.msg{text-align:center;min-height:22px;font-size:14px;color:#8b6857;margin-top:9px}
+.hidden{display:none!important}
+.success{animation:pop .45s ease}
+.unlock{
+ background:rgba(234,245,220,.95);border:1px solid #c8ddba;border-radius:22px;
+ padding:18px;text-align:center;margin:15px 0
+}
+.unlock strong{font-size:22px;display:block;margin-bottom:4px;color:#2f6a5d}
+.pass{
+ position:relative;overflow:hidden;background:#fffaf0;border:4px solid #72adba;
+ border-radius:25px;padding:20px 17px 18px;box-shadow:0 12px 30px rgba(36,73,90,.13)
+}
+.pass:before{
+ content:"";position:absolute;left:0;top:0;width:32%;height:100%;
+ background:linear-gradient(160deg,#7bb8c3,#d9ece6);opacity:.9
+}
+.pass-content{position:relative;margin-left:30%}
+.pass h2{font-size:19px;margin:0 0 16px;white-space:nowrap}
+.snorlax-mini{
+ width:95px;height:95px;border-radius:50%;object-fit:cover;object-position:9% 8%;
+ position:absolute;left:13px;bottom:20px;border:3px solid rgba(255,255,255,.65)
+}
+.row{display:grid;grid-template-columns:52px minmax(0,1fr);gap:5px;margin:9px 0;align-items:center}
+.key{font-weight:800}
+.location{font-size:10.5px;white-space:nowrap;letter-spacing:-.3px}
+.closing{text-align:center;font-size:17px;font-weight:700;margin:22px 0 4px}
+.small{text-align:center;color:var(--muted);font-size:12px;margin-top:14px}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:370px){
+ .page{width:96vw}.panel{padding:15px}.title{font-size:19px}
+ .location{font-size:9.6px}.pass h2{font-size:17px}.pass-content{margin-left:29%}
+}
 </style>
 </head>
 <body>
-<main class="wrap">
-  <section class="card" id="quiz">
-    <h1>🔐 夥伴入住前驗證</h1>
-
-    <div class="q">
-      <h2>① 什麼時候可以出現？</h2>
-      <label><input type="checkbox">09/06–09/08</label>
-      <label><input type="checkbox">想來就來</label>
-      <label><input type="checkbox">想回家就出現 👌</label>
+<main class="page">
+  <section id="quiz">
+    <div class="hero">
+      <img class="hero-img" src="snorlax-theme.png" alt="卡比獸圖案">
+      <div class="title">🔐 夥伴入住前驗證</div>
     </div>
 
-    <div class="q">
-      <h2>② 入住要帶什麼？</h2>
-      <label><input type="checkbox">換洗衣物</label>
-      <label><input type="checkbox">室友本人</label>
-      <label><input type="checkbox">泡澡用具 🛁</label>
+    <div class="panel">
+      <div class="qtitle">① 什麼時候可以出現？</div>
+      <label class="choice"><input type="checkbox">09/06–09/08</label>
+      <label class="choice"><input type="checkbox">想來就來</label>
+      <label class="choice"><input type="checkbox">想回家就出現 👌</label>
+    </div>
+
+    <div class="panel">
+      <div class="qtitle">② 入住要帶什麼？</div>
+      <label class="choice"><input type="checkbox">換洗衣物</label>
+      <label class="choice"><input type="checkbox">室友本人</label>
+      <label class="choice"><input type="checkbox">泡澡用具 🛁</label>
     </div>
 
     <button id="confirm">確認</button>
     <div class="msg" id="msg"></div>
   </section>
 
-  <section class="card hidden success" id="result">
-    <div class="unlock">🔓</div>
-    <h2>驗證成功！</h2>
-    <p>卡比獸夥伴入住通行證已解鎖 ♡</p>
+  <section id="result" class="hidden success">
+    <div class="unlock">
+      <strong>🔓 驗證成功！</strong>
+      卡比獸夥伴入住通行證已解鎖 ♡
+    </div>
 
     <div class="pass">
-      <h3>🎫 卡比獸夥伴入住通行證</h3>
-      <div class="row"><div class="key">室友｜</div><div>陳繪璇</div></div>
-      <div class="row"><div class="key">日期｜</div><div>09/06–09/08</div></div>
-      <div class="row"><div class="key">地點｜</div><div>臺北市大同區延平北路三段4號6樓</div></div>
-      <div class="row"><div class="key">房號｜</div><div>入住當日解鎖 🔒</div></div>
-      <div class="closing">想回家，就出現 😌</div>
+      <img class="snorlax-mini" src="snorlax-theme.png" alt="卡比獸圖案">
+      <div class="pass-content">
+        <h2>🎫 卡比獸夥伴入住通行證</h2>
+        <div class="row"><div class="key">室友｜</div><div>陳繪璇 💤</div></div>
+        <div class="row"><div class="key">日期｜</div><div>09/06–09/08</div></div>
+        <div class="row"><div class="key">地點｜</div><div class="location">臺北市大同區延平北路三段4號6樓</div></div>
+        <div class="row"><div class="key">房號｜</div><div>入住當日解鎖 🔒</div></div>
+      </div>
     </div>
+
+    <div class="closing">想回家，就出現吧 😌</div>
   </section>
 </main>
 
 <script>
-const btn = document.getElementById('confirm');
-const quiz = document.getElementById('quiz');
-const result = document.getElementById('result');
-const msg = document.getElementById('msg');
-
-btn.addEventListener('click', () => {
-  const boxes = [...document.querySelectorAll('input[type=checkbox]')];
-  if (boxes.every(x => x.checked)) {
-    quiz.classList.add('hidden');
-    result.classList.remove('hidden');
-    window.scrollTo({top:0,behavior:'smooth'});
-  } else {
-    const left = boxes.filter(x => !x.checked).length;
-    msg.textContent = `好像還漏了 ${left} 個正確答案 👀`;
-    if (navigator.vibrate) navigator.vibrate(80);
-  }
-});
+const boxes=[...document.querySelectorAll('input[type=checkbox]')];
+document.getElementById('confirm').onclick=()=>{
+ const missing=boxes.filter(x=>!x.checked).length;
+ if(missing){
+   document.getElementById('msg').textContent=`還有 ${missing} 個正確答案沒被發現 👀`;
+   if(navigator.vibrate) navigator.vibrate(70);
+   return;
+ }
+ document.getElementById('quiz').classList.add('hidden');
+ document.getElementById('result').classList.remove('hidden');
+ window.scrollTo({top:0,behavior:'smooth'});
+};
 </script>
 </body>
 </html>
