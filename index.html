@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>卡比獸夥伴入住驗證</title>
+<style>
+:root{
+  --bg:#fff8dc; --card:#fffdf4; --ink:#4d4338; --soft:#8b7c6b;
+  --yellow:#ffd95a; --line:#eadfbd; --ok:#6f9c73;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; display:grid; place-items:center;
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 15% 10%,#fff1a8 0 7%,transparent 8%),
+    radial-gradient(circle at 88% 88%,#ffe887 0 8%,transparent 9%),
+    var(--bg);
+}
+.wrap{width:min(92vw,430px);padding:24px 0}
+.card{
+  background:rgba(255,253,244,.96); border:1.5px solid var(--line);
+  border-radius:28px; padding:26px 22px; box-shadow:0 18px 50px rgba(96,75,25,.12);
+}
+h1{font-size:24px;text-align:center;margin:0 0 22px}
+.q{margin:20px 0}
+.q h2{font-size:17px;margin:0 0 11px}
+label{
+  display:flex;align-items:center;gap:10px;padding:11px 12px;margin:8px 0;
+  border:1px solid var(--line);border-radius:14px;background:#fff;
+  cursor:pointer;transition:.18s;
+}
+label:has(input:checked){background:#fff5be;border-color:#e6c849;transform:translateY(-1px)}
+input{width:19px;height:19px;accent-color:#d5ad19}
+button{
+  width:100%;border:0;border-radius:16px;padding:14px;font-size:16px;font-weight:700;
+  background:var(--yellow);color:#554515;cursor:pointer;margin-top:8px;
+  box-shadow:0 5px 0 #d8b744;
+}
+button:active{transform:translateY(3px);box-shadow:0 2px 0 #d8b744}
+.msg{text-align:center;min-height:24px;margin-top:15px;font-size:14px;color:#a16d45}
+.hidden{display:none}
+.success{text-align:center;animation:pop .45s ease}
+.success .unlock{font-size:34px;margin-bottom:7px}
+.success h2{font-size:22px;margin:0 0 6px}
+.success p{margin:0;color:var(--soft)}
+.pass{margin-top:18px;padding:22px 18px;border:2px dashed #d6b94c;border-radius:22px;background:#fffaf0}
+.pass h3{text-align:center;font-size:21px;margin:0 0 20px}
+.row{display:grid;grid-template-columns:64px 1fr;gap:8px;margin:12px 0;line-height:1.55}
+.key{font-weight:700;color:#7d6c55}
+.closing{text-align:center;font-weight:700;font-size:18px;margin:22px 0 2px}
+.note{text-align:center;color:var(--soft);font-size:12px;margin-top:18px}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="card" id="quiz">
+    <h1>🔐 夥伴入住前驗證</h1>
+
+    <div class="q">
+      <h2>① 什麼時候可以出現？</h2>
+      <label><input type="checkbox">09/06–09/08</label>
+      <label><input type="checkbox">想來就來</label>
+      <label><input type="checkbox">想回家就出現 👌</label>
+    </div>
+
+    <div class="q">
+      <h2>② 入住要帶什麼？</h2>
+      <label><input type="checkbox">換洗衣物</label>
+      <label><input type="checkbox">室友本人</label>
+      <label><input type="checkbox">泡澡用具 🛁</label>
+    </div>
+
+    <button id="confirm">確認</button>
+    <div class="msg" id="msg"></div>
+  </section>
+
+  <section class="card hidden success" id="result">
+    <div class="unlock">🔓</div>
+    <h2>驗證成功！</h2>
+    <p>卡比獸夥伴入住通行證已解鎖 ♡</p>
+
+    <div class="pass">
+      <h3>🎫 卡比獸夥伴入住通行證</h3>
+      <div class="row"><div class="key">室友｜</div><div>陳繪璇</div></div>
+      <div class="row"><div class="key">日期｜</div><div>09/06–09/08</div></div>
+      <div class="row"><div class="key">地點｜</div><div>臺北市大同區延平北路三段4號6樓</div></div>
+      <div class="row"><div class="key">房號｜</div><div>入住當日解鎖 🔒</div></div>
+      <div class="closing">想回家，就出現 😌</div>
+    </div>
+  </section>
+</main>
+
+<script>
+const btn = document.getElementById('confirm');
+const quiz = document.getElementById('quiz');
+const result = document.getElementById('result');
+const msg = document.getElementById('msg');
+
+btn.addEventListener('click', () => {
+  const boxes = [...document.querySelectorAll('input[type=checkbox]')];
+  if (boxes.every(x => x.checked)) {
+    quiz.classList.add('hidden');
+    result.classList.remove('hidden');
+    window.scrollTo({top:0,behavior:'smooth'});
+  } else {
+    const left = boxes.filter(x => !x.checked).length;
+    msg.textContent = `好像還漏了 ${left} 個正確答案 👀`;
+    if (navigator.vibrate) navigator.vibrate(80);
+  }
+});
+</script>
+</body>
+</html>
